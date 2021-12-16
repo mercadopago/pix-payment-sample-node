@@ -139,11 +139,21 @@
                             <div class="row justify-content-md-center">
                                 <div class="col-md-4 product-detail">
                                     <div class="product-info">
-                                        <br>
-                                        <p><b>ID: </b><span id="payment-id"></span></p>
-                                        <p><b>Status: </b><span id="payment-status"></span></p>
-                                        <p><b>Detail: </b><span id="payment-detail"></span></p>
-                                        <br>
+                                        <div id="fail-response">
+                                            <br/>
+                                            <img src="img/fail.png" width="350px">
+                                            <p class="text-center font-weight-bold">Something went wrong</p>
+                                            <p id="error-message" class="text-center"></p>
+                                            <br/>
+                                        </div>
+
+                                        <div id="success-response">
+                                            <br/>
+                                            <p><b>ID: </b><span id="payment-id"></span></p>
+                                            <p><b>Status: </b><span id="payment-status"></span></p>
+                                            <p><b>Detail: </b><span id="payment-detail"></span></p>
+                                            <br/>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -152,7 +162,7 @@
                 </div>
             </div>
 
-            <div class="container text-center m-4">
+            <div id="pix-code-section" class="container text-center m-4">
                 <p>Scan the following QR Code to complete the payment:</p>
                 <img src="" id="qr-code-image" width="250px">
                 <p class="m-3">Or you can also use the following code as copy and paste:</p>

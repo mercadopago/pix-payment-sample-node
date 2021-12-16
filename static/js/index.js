@@ -39,12 +39,19 @@ function sendPayment() {
             return response.json();
         })
         .then(result => {
-            document.getElementById("payment-id").innerText = result.id;
-            document.getElementById("payment-status").innerText = result.status;
-            document.getElementById("payment-detail").innerText = result.detail;
+            if(!result.hasOwnProperty("error_message")) {
+                document.getElementById("payment-id").innerText = result.id;
+                document.getElementById("payment-status").innerText = result.status;
+                document.getElementById("payment-detail").innerText = result.detail;
+                document.getElementById("qr-code-image").src = `data:image/jpeg;base64,${result.qrCodeBase64}`;
+                document.getElementById("pix-code").innerText = result.qrCode;
 
-            document.getElementById("qr-code-image").src = `data:image/jpeg;base64,${result.qrCodeBase64}`;
-            document.getElementById("pix-code").innerText = result.qrCode;
+                document.getElementById("success-response").style.display = "block";
+                document.getElementById("pix-code-section").style.display = "block";
+            } else {
+                document.getElementById("error-message").innerText = result.error_message;
+                document.getElementById("fail-response").style.display = "block";
+            }
 
             $('.container__payment').fadeOut(500);
             setTimeout(() => { $('.container__result').show(500).fadeIn(); }, 500);
